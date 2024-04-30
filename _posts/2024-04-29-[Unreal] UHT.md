@@ -25,4 +25,4 @@ tags: [UHT, 리플렉션, UClass]
 	+ C++ 자체에는 리플렉션 기능이 없음
 
 ## 참고
-+ https://www.unrealengine.com/en-US/blog/unreal-property-system-reflection
++ <https://www.unrealengine.com/en-US/blog/unreal-property-system-reflection>
