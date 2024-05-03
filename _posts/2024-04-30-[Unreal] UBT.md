@@ -7,7 +7,7 @@ tags: [UBT, Build.cs, Target.cs]
 ---
 
 ## 개념
-+ 크로스 플랫폼 빌드를 지원하기위한 일종의 전처리기
++ 크로스 플랫폼 빌드를 지원하기위한 빌드 툴
 
 ## 특징
 + Generate Visual Studio project files로 인해 실행됨
