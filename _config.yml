@@ -16,7 +16,7 @@ timezone: Asia/Seoul
 
 title: 티거의 요약노트 # the main title
 
-tagline: 최대한 핵심만 기록합니다 # it will display as the sub-title
+tagline: 최대한 짧게 기록합니다 # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
