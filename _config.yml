@@ -14,7 +14,7 @@ timezone: Asia/Seoul
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: 티거의 요약노트 # the main title
+title: Tigger's Devlog # the main title
 
 tagline: 최대한 짧게 기록합니다 # it will display as the sub-title
 
@@ -26,7 +26,7 @@ description: >- # used by seo meta and the atom feed
 url: ""
 
 github:
-  username: t2ggerch0 # change to your github username
+  username: chojbsoft # change to your github username
 
 #twitter:
 #  username: twitter_username # change to your twitter username
