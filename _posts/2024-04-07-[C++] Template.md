@@ -13,6 +13,7 @@ tags: [Template, 일반화 프로그래밍, ODR, 가변 인자, Parameter Pack, 
 + 헤더파일에 정의해도 일반 함수와는 다르게 ODR(One Definition Rule) 위반이 안생김
 + Parameter Pack과 Pack Expansion으로 가변인자 함수를 정의할 수 있음  
 + 템플릿 특수화: 해당 타입에 정확히 대응되는 정의를 발견하면 해당 정의를 사용함
++ 템플릿 메타 프로그래밍: 컴파일 타임에 연산을 끝내서, 런타임의 속도를 향상시키는 기법
 
 ## Details
 프로그래밍 언어에서 바인딩이란 식별자, 연산자 등의 토큰의 속성이 구체적으로 정해지는 것을 의미합니다.
@@ -66,7 +67,7 @@ int main() {
 }
 ```
 
-typename 키워드 뒤에 있는 ...은 template parameter pack이라 부르고, Args 타입 뒤에 있는 function parameter pack이라고 부릅니다.
+typename 키워드 뒤에 있는 ...은 template parameter pack이라 부르고, Args 타입 뒤에 있는 ...은 function parameter pack이라고 부릅니다.
 이러한 파라미터 팩을 어떻게 다시 풀 것인가를 고민해보면 fold expression 방식과 pack expansion 방식이 있습니다.
 위처럼 ... op pack의 fold expression 방식으로 구현한다면 앞에 있는 파라미터부터 계산됩니다.
 pack expansion 방식으로 구현한다면 재귀 함수 형태로 동작하기 때문에, 재귀 종료 함수를 위에 정의해야 합니다.
@@ -75,3 +76,25 @@ pack expansion 방식으로 구현한다면 재귀 함수 형태로 동작하기
 복사 생성자나 이동 생성자를 호출하지 않는 최적화를 목적으로, 파라미터만 넘겨서 내부에서 생성자를 호출하는 환경입니다.
 컨테이너나 스마트포인터의 내부에서 생성자를 호출할 때, 무슨 파라미터가 들어올지 모르기 때문입니다.
 
+또 흥미로운 주제로 템플릿 메타 프로그래밍이라는 것이 있습니다. 
+컴파일 타임에 연산을 끝내서 속도를 향상할 수 있습니다.
+하지만 컴파일 타임에 연산이 되기 때문에, 그말대로 디버깅이 불가능합니다.
+
+템플릿 메타 프로그래밍
+```cpp
+template<int N>
+struct Factorial {
+    static const int value = N * Factorial<N - 1>::value; 
+};
+
+// 기본 케이스
+template<>
+struct Factorial<0> {
+    static const int value = 1; // 0! = 1
+};
+
+int main() {
+    std::cout << "5! = " << Factorial<5>::value << std::endl; 
+    return 0;
+}
+```
